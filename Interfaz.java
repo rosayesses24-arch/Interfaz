@@ -80,32 +80,33 @@ public class Interfaz extends JFrame {
 	            public void actionPerformed(ActionEvent e) {
 
 	                boolean valido = true;
+	                
+	                String email_valido = "admin@uabcs.mx";
+	                		String password_valida = "12345";
 
 	                String email = email_input.getText();
 	                String password = new String(password_input.getPassword());
 
-	                // EMAIL
-	                if (email.equals("") || email.contains(" ")) {
-	                    email_input.setBorder(BorderFactory.createLineBorder(Color.RED, 3));
-	                    valido = false;
-	                } else {
-	                    email_input.setBorder(BorderFactory.createLineBorder(Color.GREEN, 3));
-	                }
+	                if (email.equals(email_valido) && password.equals(password_valida)) {
 
-	                // PASSWORD
-	                if (password.length() < 6 || password.contains(" ")) {
-	                    password_input.setBorder(BorderFactory.createLineBorder(Color.RED, 3));
-	                    valido = false;
-	                } else {
-	                    password_input.setBorder(BorderFactory.createLineBorder(Color.GREEN, 3));
-	                }
+	                    JOptionPane.showMessageDialog(
+	                            null,
+	                            "Bienvenido al sistema",
+	                            "Acceso correcto",
+	                            JOptionPane.INFORMATION_MESSAGE
+	                    );
 
-	                if (valido) {
-	                    JOptionPane.showMessageDialog(null, "Acceso correcto");
 	                } else {
-	                    JOptionPane.showMessageDialog(null, "Datos inválidos");
+
+	                    JOptionPane.showMessageDialog(
+	                            null,
+	                            "Correo o contraseña incorrectos",
+	                            "Error",
+	                            JOptionPane.ERROR_MESSAGE
+	                    );
 	                }
 	            }
+	        
 	        });
 	    }
 
