@@ -29,10 +29,26 @@ public class Interfaz extends JFrame {
 	        setDefaultCloseOperation(EXIT_ON_CLOSE);
 	        setLocationRelativeTo(null);
 
-	        login();
+	        router("login");
 	        registro();
 
 	        setVisible(true);
+	    }
+	    
+	    public void router(String target) {
+	    	this.getContentPane().removeAll();
+	    	
+	    	if (target.equals("login")){
+	    	this.login();
+	    }
+	    if (target.equals("registro")) {
+	        this.registro();
+}
+         this.repaint();
+         this.revalidate();
+	    
+	    
+	    	
 	    }
 
 	    public void login() {
@@ -70,10 +86,19 @@ public class Interfaz extends JFrame {
 	        JPasswordField password_input = new JPasswordField();
 	        password_input.setBounds(50, 230, 300, 30);
 	        login_container.add(password_input);
+	        
 
 	        JButton access_btn = new JButton("Acceder");
 	        access_btn.setBounds(100, 300, 200, 40);
 	        login_container.add(access_btn);
+	        
+	        JButton btnIrRegistro = new JButton("Ir a registro");
+	        btnIrRegistro.setBounds(100, 360, 200, 40);
+	        login_container.add(btnIrRegistro);
+
+	        btnIrRegistro.addActionListener(e -> {
+	            router("registro");
+	        });
 
 	        access_btn.addActionListener(new ActionListener() {
 	            @Override
@@ -186,6 +211,14 @@ public class Interfaz extends JFrame {
 	        JButton register_btn = new JButton("Crear cuenta");
 	        register_btn.setBounds(50, 430, 300, 50);
 	        rgs_container.add(register_btn);
+	        JButton btnIrLogin = new JButton("Ir a login");
+	        btnIrLogin.setBounds(50, 490, 300, 40);
+	        rgs_container.add(btnIrLogin);
+
+	        // 🔥 EVENTO
+	        btnIrLogin.addActionListener(e -> {
+	            router("login");
+	        });
 
 	        register_btn.addActionListener(new ActionListener() {
 	            @Override
