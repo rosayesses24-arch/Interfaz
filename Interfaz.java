@@ -215,7 +215,6 @@ public class Interfaz extends JFrame {
 	        btnIrLogin.setBounds(50, 490, 300, 40);
 	        rgs_container.add(btnIrLogin);
 
-	        // 🔥 EVENTO
 	        btnIrLogin.addActionListener(e -> {
 	            router("login");
 	        });
