@@ -11,7 +11,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -28,11 +32,35 @@ public class Interfaz extends JFrame {
 	        setLayout(null);
 	        setDefaultCloseOperation(EXIT_ON_CLOSE);
 	        setLocationRelativeTo(null);
-
+	       
+	        crearMenu();
 	        router("login");
-	        registro();
+
 
 	        setVisible(true);
+	    }
+	    public void crearMenu() {
+       	 JMenuBar barra = new JMenuBar();
+       	 
+       	 JMenu menuCuenta = new JMenu("Cuenta");
+       	 
+       	 JMenuItem itemLogin = new JMenuItem("Acceder");
+         JMenuItem itemRegistro = new JMenuItem("Registrar");
+         
+         itemLogin.addActionListener(e -> {
+             router("login");
+         });
+
+         itemRegistro.addActionListener(e -> {
+             router("registro");
+         });
+         menuCuenta.add(itemLogin);
+         menuCuenta.add(itemRegistro);
+         
+         barra.add(menuCuenta);
+         
+         setJMenuBar(barra);
+         
 	    }
 	    
 	    public void router(String target) {
@@ -266,8 +294,11 @@ public class Interfaz extends JFrame {
 	                    JOptionPane.showMessageDialog(null, "Corrige los errores");
 	                }
 	            }
+
 	        });
-	    }
+	      
+	        }
+
 
 	    public static void main(String[] args) {
 	        new Interfaz();
